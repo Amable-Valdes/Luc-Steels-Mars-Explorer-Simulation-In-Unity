@@ -57,16 +57,17 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Camera\CameraControl.cs" />
      <Compile Include="Assets\Scripts\Camera\OLDCameraMovement.cs" />
-     <Compile Include="Assets\Scripts\CopiaRobotControl.cs" />
      <Compile Include="Assets\Scripts\LimitsCollision.cs" />
      <Compile Include="Assets\Scripts\MineralBehaviour.cs" />
      <Compile Include="Assets\Scripts\Robots\RobotControl.cs" />
      <Compile Include="Assets\Scripts\Robots\Sensor.cs" />
      <Compile Include="Assets\Scripts\Robots\Sensor_Robot.cs" />
-     <Compile Include="Assets\Scripts\SimulationControl.cs" />
+     <Compile Include="Assets\Scripts\SimulationManager.cs" />
      <Compile Include="Assets\Scripts\Spawns\MineralSpawn.cs" />
      <Compile Include="Assets\Scripts\Spawns\RobotSpawn.cs" />
      <Compile Include="Assets\Scripts\StoreMineral.cs" />
+     <Compile Include="Assets\UI\Complete.cs" />
+     <Compile Include="Assets\UI\MainMenu.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/Programas/Unity/Projects/Unity Steels Mars Explorer Simulation/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

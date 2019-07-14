@@ -2,11 +2,18 @@
 
 public class StoreMineral : MonoBehaviour
 {
+
+    private SimulationManager simulationManager;
+    void Awake()
+    {
+        simulationManager = GameObject.Find("SimulationManager").GetComponent<SimulationManager>();
+    }
+
     void OnTriggerEnter(Collider collisionInfo)
     {
         if (collisionInfo.GetComponent<Collider>().tag == "Mineral")
         {
-            collisionInfo.GetComponent<Collider>().GetComponent<MineralBehaviour>().inWarehouse = true;
+            Mineral_In_Base(collisionInfo.GetComponent<Collider>().gameObject);
         }
 
         if (collisionInfo.GetComponent<Collider>().tag == "Robot")
@@ -14,7 +21,7 @@ public class StoreMineral : MonoBehaviour
             collisionInfo.GetComponent<Collider>().GetComponent<RobotControl>().inWarehouse = true;
             if (collisionInfo.GetComponent<Collider>().GetComponent<RobotControl>().mineral_Loaded != null)
             {
-                collisionInfo.GetComponent<Collider>().GetComponent<RobotControl>().mineral_Loaded.GetComponent<MineralBehaviour>().inWarehouse = true;
+                Mineral_In_Base(collisionInfo.GetComponent<Collider>().GetComponent<RobotControl>().mineral_Loaded);
             }
         }
     }
@@ -23,7 +30,7 @@ public class StoreMineral : MonoBehaviour
     {
         if (collisionInfo.GetComponent<Collider>().tag == "Mineral")
         {
-            collisionInfo.GetComponent<Collider>().GetComponent<MineralBehaviour>().inWarehouse = true;
+            Mineral_In_Base(collisionInfo.GetComponent<Collider>().gameObject);
         }
 
         if (collisionInfo.GetComponent<Collider>().tag == "Robot")
@@ -31,8 +38,16 @@ public class StoreMineral : MonoBehaviour
             collisionInfo.GetComponent<Collider>().GetComponent<RobotControl>().inWarehouse = true;
             if (collisionInfo.GetComponent<Collider>().GetComponent<RobotControl>().mineral_Loaded != null)
             {
-                collisionInfo.GetComponent<Collider>().GetComponent<RobotControl>().mineral_Loaded.GetComponent<MineralBehaviour>().inWarehouse = true;
+                Mineral_In_Base(collisionInfo.GetComponent<Collider>().GetComponent<RobotControl>().mineral_Loaded);
             }
+        }
+    }
+
+    private void Mineral_In_Base(GameObject mineral)
+    {
+        if (mineral != null && mineral.GetComponent<MineralBehaviour>().inWarehouse != true) {
+            mineral.GetComponent<MineralBehaviour>().inWarehouse = true;
+            simulationManager.Mineral_In_Base(mineral);
         }
     }
 }
