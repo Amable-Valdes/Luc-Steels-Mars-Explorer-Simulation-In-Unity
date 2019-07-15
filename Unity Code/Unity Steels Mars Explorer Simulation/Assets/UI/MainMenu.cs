@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
 
     public void Start_Simulation()
     {
-        GameObject.Find("SimulationManager").GetComponent<SimulationManager>().Start_Simulation();
+        SceneManager.LoadScene("Simulation", LoadSceneMode.Single);
     }
 
     public void Quit()

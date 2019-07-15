@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sensor : MonoBehaviour
+public class SensorClose : MonoBehaviour
 {
     private GameObject robot;
 
     void Awake()
     {
-        robot = this.gameObject.transform.parent.gameObject;
+        robot = this.transform.parent.gameObject;
     }
 
     void OnTriggerEnter(Collider collisionInfo)
     {
-        if (collisionInfo.tag == "Mineral") { 
-            Notify_Close_Mineral(collisionInfo.GetComponent<Collider>().gameObject);
+        if (collisionInfo.tag == "Robot")
+        {
+            Notify_Close_Robot(collisionInfo.GetComponent<Collider>().gameObject);
         }
 
         if (collisionInfo.tag == "Track")
@@ -25,9 +26,9 @@ public class Sensor : MonoBehaviour
 
     void OnTriggerStay(Collider collisionInfo)
     {
-        if (collisionInfo.tag == "Mineral")
+        if (collisionInfo.tag == "Robot")
         {
-            Notify_Close_Mineral(collisionInfo.GetComponent<Collider>().gameObject);
+            Notify_Close_Robot(collisionInfo.GetComponent<Collider>().gameObject);
         }
 
         if (collisionInfo.tag == "Track")
@@ -36,11 +37,11 @@ public class Sensor : MonoBehaviour
         }
     }
 
-    private void Notify_Close_Mineral(GameObject mineral)
+    private void Notify_Close_Robot(GameObject robot)
     {
-        if (!robot.GetComponent<RobotControl>().close_Minerals.Contains(mineral) && !mineral.GetComponent<MineralBehaviour>().inWarehouse)
+        if (!robot.GetComponent<RobotControl>().close_Robots.Contains(robot))
         {
-            robot.GetComponent<RobotControl>().close_Minerals.Add(mineral);
+            robot.GetComponent<RobotControl>().close_Robots.Add(robot);
         }
     }
 
@@ -52,7 +53,7 @@ public class Sensor : MonoBehaviour
 
             float distance_Track_Mothership = Mathf.Pow(
                 (
-                    Mathf.Pow(mothership.transform.position.x - track.transform.position.x, 2) + 
+                    Mathf.Pow(mothership.transform.position.x - track.transform.position.x, 2) +
                     Mathf.Pow(mothership.transform.position.z - track.transform.position.z, 2))
                 , 0.5f);
             float distance_Robot_Mothership = Mathf.Pow(
@@ -61,7 +62,7 @@ public class Sensor : MonoBehaviour
                     Mathf.Pow(mothership.transform.position.z - robot.transform.position.z, 2))
                 , 0.5f);
 
-            if(distance_Robot_Mothership < distance_Track_Mothership)
+            if (distance_Robot_Mothership < distance_Track_Mothership)
             {
                 robot.GetComponent<RobotControl>().close_Tracks.Add(track);
             }

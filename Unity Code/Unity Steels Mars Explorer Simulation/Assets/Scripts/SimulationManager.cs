@@ -2,56 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SimulationManager : MonoBehaviour
 {
-
-    private GameObject mainMenu;
-    private GameObject complete;
-
     private Text label_Minerals;
     private Text label_Mineral_Totals;
+    private Text label_Mineral_Ground;
     private Text label_Mineral_Base;
 
     private GameObject cam;
     public GameObject theMineral;
     public GameObject theRobot;
 
-    private List<GameObject> minerals;
+    public List<GameObject> minerals;
     private List<GameObject> minerals_Stored;
-    private List<GameObject> robots;
+    public List<GameObject> robots;
 
-    private float start_Time;
+    public float start_Time;
 
     void Awake()
     {
-        mainMenu = GameObject.Find("Canvas/MainMenu");
-        mainMenu.SetActive(true);
-
-        label_Minerals = GameObject.Find("Canvas/Stadistics/Label_Minerals").GetComponent<Text>();
-        label_Minerals.enabled = false;
-
-        label_Mineral_Totals = GameObject.Find("Canvas/Stadistics/Minerals_Total").GetComponent<Text>();
-        label_Mineral_Totals.enabled = false;
-
-        label_Mineral_Base = GameObject.Find("Canvas/Stadistics/Minerals_Base").GetComponent<Text>();
-        label_Mineral_Base.enabled = false;
-
-        complete = GameObject.Find("Canvas/Complete");
-        complete.SetActive(false);
-        
-        cam = GameObject.Find("CameraRig");
-        cam.GetComponent<CameraControl>().m_Targets = new List<Transform>().ToArray();
+        Start_Simulation();
     }
 
     public void Start_Simulation()
     {
-        start_Time = Time.time;
 
-        mainMenu.SetActive(false);
-        label_Minerals.enabled = true;
-        label_Mineral_Totals.enabled = true;
-        label_Mineral_Base.enabled = true;
+        label_Minerals = GameObject.Find("Canvas/Stadistics/Label_Minerals").GetComponent<Text>();
+        label_Mineral_Totals = GameObject.Find("Canvas/Stadistics/Minerals_Total").GetComponent<Text>();
+        label_Mineral_Ground = GameObject.Find("Canvas/Stadistics/Minerals_Ground").GetComponent<Text>();
+        label_Mineral_Base = GameObject.Find("Canvas/Stadistics/Minerals_Base").GetComponent<Text>();
+
+        cam = GameObject.Find("CameraRig");
+
+        start_Time = Time.time;
 
         minerals = new List<GameObject>();
         minerals_Stored = new List<GameObject>();
@@ -61,7 +46,8 @@ public class SimulationManager : MonoBehaviour
 
         Robots_Generator();
 
-        label_Mineral_Totals.text = "- In the ground: " + minerals.Count;
+        label_Mineral_Totals.text = "- In total: " + minerals.Count;
+        label_Mineral_Ground.text = "- In the ground: " + minerals.Count;
 
         cam.GetComponent<CameraControl>().m_Targets = convertLists().ToArray();
     }
@@ -146,33 +132,11 @@ public class SimulationManager : MonoBehaviour
     public void Mineral_In_Base(GameObject mineral)
     {
         minerals_Stored.Add(mineral);
+        label_Mineral_Ground.text = "- In the ground: " + (minerals.Count - minerals_Stored.Count);
         label_Mineral_Base.text = "- In the mothership: " + minerals_Stored.Count;
         if (minerals_Stored.Count == minerals.Count)
         {
-            Finish_Simulation();
+            SceneManager.LoadScene("Complete_Menu", LoadSceneMode.Single);
         }
-    }
-
-    public void Finish_Simulation()
-    {
-        //Minerals
-        complete.transform.GetChild(3).GetComponent<Text>().text = "" + minerals.Count;
-        //Robots
-        complete.transform.GetChild(5).GetComponent<Text>().text = "" + robots.Count;
-        //Time
-        float seconds = (int) (Time.time - start_Time);
-        int mins = (int)(seconds / 60);
-        if (mins >= 1)
-        {
-            seconds = seconds - mins * 60;
-        }
-        complete.transform.GetChild(6).GetComponent<Text>().text = mins + " mins, " + seconds + " seconds";
-
-
-        mainMenu.SetActive(false);
-        label_Minerals.enabled = false;
-        label_Mineral_Totals.enabled = false;
-        label_Mineral_Base.enabled = false;
-        complete.SetActive(true);
     }
 }

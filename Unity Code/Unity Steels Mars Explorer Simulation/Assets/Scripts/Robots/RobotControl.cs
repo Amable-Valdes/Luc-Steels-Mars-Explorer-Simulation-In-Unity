@@ -15,7 +15,7 @@ public class RobotControl : MonoBehaviour
     public GameObject mineral_Loaded;
     private GameObject track_To_Follow;
     private int tracks_waited;
-    public const int NUM_MAX_TRACKS_WAITED = 3;
+    public const int NUM_MAX_TRACKS_WAITED = 4;
 
     public List<GameObject> close_Robots;
     public List<GameObject> close_Minerals;
@@ -68,8 +68,19 @@ public class RobotControl : MonoBehaviour
         //		THEN pick sample up
         else if (close_Minerals.Count > 0 && mineral_Loaded == null && !inWarehouse)
         {
-            mineral_Loaded = close_Minerals[0];
-            track_To_Follow = null;
+            if (Is_Close_To(close_Minerals[0].transform.position))
+            {
+                mineral_Loaded = close_Minerals[0];
+                track_To_Follow = null;
+            }
+            else
+            {
+                transform.Translate(
+                    new Vector3(close_Minerals[0].transform.position.x - this.transform.position.x,
+                    0f,
+                    close_Minerals[0].transform.position.z - this.transform.position.z)
+                    * Time.deltaTime * 3, Space.World);
+            }
         }
         //	(5) IF  sense crumbs 
         //		THEN pick up 1 crumb 
@@ -124,9 +135,16 @@ public class RobotControl : MonoBehaviour
         }
         else
         {
-            Instantiate(theTrack, new Vector3(this.transform.position.x, 0.25f, this.transform.position.z + 1), Quaternion.identity);
-            Instantiate(theTrack, new Vector3(this.transform.position.x + 1, 0.25f, this.transform.position.z), Quaternion.identity);
-            tracks_waited = 0;
+            if (close_Tracks.Count > 2)
+            {
+                close_Tracks[0].GetComponent<TrackBehaviour>().Add();
+            }
+            else
+            {
+                GameObject newTrack = Instantiate(theTrack, new Vector3(this.transform.position.x, 0.25f, this.transform.position.z + 1), Quaternion.identity);
+                newTrack.GetComponent<TrackBehaviour>().Create();
+                tracks_waited = 0;
+            }
         }
     }
 
@@ -183,7 +201,7 @@ public class RobotControl : MonoBehaviour
         mineral_Loaded = null;
     }
 
-    private Vector3 Track_To_Follow;
+    
 
     private void Follow_Track()
     {
@@ -196,7 +214,7 @@ public class RobotControl : MonoBehaviour
         {
             if (Is_Close_To(track_To_Follow.transform.position))
             {
-                Destroy(track_To_Follow);
+                track_To_Follow.GetComponent<TrackBehaviour>().Remove();
                 track_To_Follow = null;
             }
             else
