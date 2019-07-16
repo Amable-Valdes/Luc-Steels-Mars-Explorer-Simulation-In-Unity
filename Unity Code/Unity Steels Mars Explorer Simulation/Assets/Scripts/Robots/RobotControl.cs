@@ -135,16 +135,9 @@ public class RobotControl : MonoBehaviour
         }
         else
         {
-            if (close_Tracks.Count > 2)
-            {
-                close_Tracks[0].GetComponent<TrackBehaviour>().Add();
-            }
-            else
-            {
-                GameObject newTrack = Instantiate(theTrack, new Vector3(this.transform.position.x, 0.25f, this.transform.position.z + 1), Quaternion.identity);
-                newTrack.GetComponent<TrackBehaviour>().Create();
-                tracks_waited = 0;
-            }
+            GameObject newTrack = Instantiate(theTrack, new Vector3(this.transform.position.x, 0.25f, this.transform.position.z), Quaternion.identity);
+            newTrack.GetComponent<TrackBehaviour>().Create();
+            tracks_waited = 0;
         }
     }
 

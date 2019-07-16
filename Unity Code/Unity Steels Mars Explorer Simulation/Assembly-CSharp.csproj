@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\Robots\SensorLarge.cs" />
      <Compile Include="Assets\Scripts\SimulationManager.cs" />
      <Compile Include="Assets\Scripts\StoreMineral.cs" />
+     <Compile Include="Assets\Scripts\Tracks\SimplifyTracks.cs" />
      <Compile Include="Assets\Scripts\Tracks\TrackBehaviour.cs" />
      <Compile Include="Assets\UI\Complete.cs" />
      <Compile Include="Assets\UI\MainMenu.cs" />

@@ -119,14 +119,14 @@ public class SimulationManager : MonoBehaviour
 
     private void Robots_Generator()
     {
-        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(0, 0.5f, 5), Quaternion.identity)));
-        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(5, 0.5f, 5), Quaternion.identity)));
-        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(-5, 0.5f, 5), Quaternion.identity)));
-        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(0, 0.5f, -5), Quaternion.identity)));
-        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(5, 0.5f, -5), Quaternion.identity)));
-        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(-5, 0.5f, -5), Quaternion.identity)));
-        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(5, 0.5f, 0), Quaternion.identity)));
-        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(-5, 0.5f, 0), Quaternion.identity)));
+        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(0, 0.5f, 0), Quaternion.identity)));
+        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(0, 0.5f, 0), Quaternion.identity)));
+        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(0, 0.5f, 0), Quaternion.identity)));
+        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(0, 0.5f, 0), Quaternion.identity)));
+        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(0, 0.5f, 0), Quaternion.identity)));
+        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(0, 0.5f, 0), Quaternion.identity)));
+        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(0, 0.5f, 0), Quaternion.identity)));
+        robots.Add(((GameObject)Instantiate(theRobot, new Vector3(0, 0.5f, 0), Quaternion.identity)));
     }
 
     public void Mineral_In_Base(GameObject mineral)

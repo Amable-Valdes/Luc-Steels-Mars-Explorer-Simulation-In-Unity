@@ -3,13 +3,17 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - CameraControl
     - Complete
+    - DontDestroy
     - LimitsCollision
     - MainMenu
     - MineralBehaviour
     - RobotControl
-    - Sensor
+    - SensorClose
+    - SensorLarge
+    - SimplifyTracks
     - SimulationManager
     - StoreMineral
+    - TrackBehaviour
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
@@ -21,7 +25,105 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/The_Scene.unity:
+    Assets/Scenes/Complete_Menu.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 9372}
+    - Class: 114
+      Script: {instanceID: 9374}
+    - Class: 114
+      Script: {instanceID: 9380}
+    - Class: 114
+      Script: {instanceID: 9386}
+    - Class: 114
+      Script: {instanceID: 9394}
+    - Class: 114
+      Script: {instanceID: 9430}
+    - Class: 114
+      Script: {instanceID: 9432}
+    - Class: 114
+      Script: {instanceID: 9906}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/Main_Menu.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 9372}
+    - Class: 114
+      Script: {instanceID: 9374}
+    - Class: 114
+      Script: {instanceID: 9380}
+    - Class: 114
+      Script: {instanceID: 9386}
+    - Class: 114
+      Script: {instanceID: 9394}
+    - Class: 114
+      Script: {instanceID: 9430}
+    - Class: 114
+      Script: {instanceID: 9432}
+    - Class: 114
+      Script: {instanceID: 9870}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/Simulation.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -53,37 +155,39 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9338}
+      Script: {instanceID: 9340}
     - Class: 114
-      Script: {instanceID: 9370}
+      Script: {instanceID: 9374}
     - Class: 114
-      Script: {instanceID: 9372}
+      Script: {instanceID: 9380}
     - Class: 114
-      Script: {instanceID: 9378}
+      Script: {instanceID: 9386}
     - Class: 114
-      Script: {instanceID: 9384}
-    - Class: 114
-      Script: {instanceID: 9392}
-    - Class: 114
-      Script: {instanceID: 9428}
+      Script: {instanceID: 9394}
     - Class: 114
       Script: {instanceID: 9430}
     - Class: 114
-      Script: {instanceID: 9464}
+      Script: {instanceID: 9432}
     - Class: 114
-      Script: {instanceID: 9806}
+      Script: {instanceID: 9466}
     - Class: 114
-      Script: {instanceID: 9864}
+      Script: {instanceID: 9706}
     - Class: 114
-      Script: {instanceID: 9944}
+      Script: {instanceID: 9730}
     - Class: 114
-      Script: {instanceID: 10350}
+      Script: {instanceID: 9744}
     - Class: 114
-      Script: {instanceID: 10418}
+      Script: {instanceID: 9812}
     - Class: 114
-      Script: {instanceID: 10476}
+      Script: {instanceID: 9952}
     - Class: 114
-      Script: {instanceID: 19310}
+      Script: {instanceID: 10296}
+    - Class: 114
+      Script: {instanceID: 10358}
+    - Class: 114
+      Script: {instanceID: 10426}
+    - Class: 114
+      Script: {instanceID: 10482}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -575,6 +679,12 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SensorClose
+  - hash:
+      serializedVersion: 2
       Hash: 303ad70ce203ad874efe2965d0fbcff9
     assemblyName: Unity.Analytics.Tracker.dll
     namespaceName: UnityEngine.Analytics
@@ -587,10 +697,22 @@ ScriptsOnlyBuild:
     className: AnalyticsTracker
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SimplifyTracks
+  - hash:
+      serializedVersion: 2
       Hash: 0fb27be807aa299702f28ad0bcad1f46
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ControlPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: fc182870a6885e2c6f2bf36769915e24
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TrackBehaviour
   - hash:
       serializedVersion: 2
       Hash: b8a5e8091ab0b8861d2add371082c5e0
@@ -603,12 +725,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ControlTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MineralSpawn
   - hash:
       serializedVersion: 2
       Hash: 49c2808f0a13a09f1e3aab328b34c988
@@ -647,6 +763,12 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
+      Hash: fd933bddc156d292e1ed381932e7953e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Complete
+  - hash:
+      serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -656,7 +778,7 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Sensor
+    className: SensorLarge
   - hash:
       serializedVersion: 2
       Hash: 3f8d7b92a6be3c715e55d5cfa7cc8384
@@ -746,7 +868,7 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Sensor_Robot
+    className: DontDestroy
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -767,7 +889,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: 94d3c8f72ff5a435d703f989447d8534
+      Hash: 6262dac359e2beb8139efff5800cdd41
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SimulationManager
@@ -783,12 +905,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ColorGradient
-  - hash:
-      serializedVersion: 2
-      Hash: d226cde2b9ff321e6625e1c33403d7fa
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: RobotSpawn
   - hash:
       serializedVersion: 2
       Hash: 8649814970b42d345b89944b862453cc
@@ -813,14 +929,10 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: d662f017d05e95741b93d0ed3c7f20c4
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Complete
   platform: 19
   scenePathNames:
-  - Assets/Scenes/The_Scene.unity
-  playerPath: D:/Programing/GitHub/Luc-Steels-Mars-Explorer-Simulation-In-Unity/Simulation/Unity
-    Steels Mars Explorer Simulation.exe
+  - Assets/Scenes/Main_Menu.unity
+  - Assets/Scenes/Simulation.unity
+  - Assets/Scenes/Complete_Menu.unity
+  playerPath: D:/Programing/GitHub/Luc-Steels-Mars-Explorer-Simulation-In-Unity/Mars
+    Explorer Simulation.exe
