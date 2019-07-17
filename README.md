@@ -9,7 +9,7 @@ This project is an ampliation of my other project with the Steels' Mars explorer
 can find [here](https://github.com/Amable-Valdes/Luc-Steels-Mars-Explorer-Simulation-with-Collaborative-Transport), 
 but instead of been implemented on Javascript i have done it on Unity because i always wanted to do something in that game engine and i wanted to practise my C# skills.
 
-![Simulation image should be visible here](https://github.com/Amable-Valdes/Luc-Steels-Mars-Explorer-Simulation-In-Unity/blob/master/others/Simulation_Example.PNG)
+![Simulation image should be visible here](https://github.com/Amable-Valdes/Luc-Steels-Mars-Explorer-Simulation-In-Unity/blob/master/Others/Simulation_Example.PNG)
 
 ## The project
 
